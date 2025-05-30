@@ -30,6 +30,21 @@ public class AlunoController : ControllerBase
             return BadRequest("Error");
         }
     }
+
+    [HttpGet("TotalAlunos")]
+    public async Task<ActionResult<int>> GetTotalAlunos()
+    {
+        try
+        {
+            var totalalunos = await _alunoService.GetTotalAlunos();
+            return Ok(totalalunos);
+        }
+        catch (Exception)
+        {
+            return BadRequest("Error");
+        }
+    }
+
     [HttpGet("Id:{Id}", Name = "GetAluno")]
     public async Task<ActionResult<Aluno>> GetAluno([FromQuery] Guid Id)
     {

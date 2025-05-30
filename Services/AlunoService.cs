@@ -42,7 +42,6 @@ namespace AlunosAPI.Services
                 throw;
             }
             
-            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Aluno>> GetAlunosByName(string Nome)
@@ -67,6 +66,21 @@ namespace AlunosAPI.Services
         {
             _context.Entry(aluno).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> GetTotalAlunos()
+        {
+            try
+            {
+                var listaAllunos = await _context.Alunos.ToListAsync();
+                return  listaAllunos.Count;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }
