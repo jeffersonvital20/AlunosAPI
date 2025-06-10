@@ -36,7 +36,7 @@ namespace AlunosAPI.Services
             {
                 return await _context.Alunos.ToListAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
